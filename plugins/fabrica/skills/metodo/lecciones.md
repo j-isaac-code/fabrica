@@ -21,6 +21,11 @@ Para agregar una: `/aprender`. Para depurar: `/consolidar`.
 
 - **Una sola implementación de cada consulta** (2026-10). Tener el código duplicado por motor de base de datos divergió, y dos bases vivas en producción se desfasaron semanas sin que nadie lo notara. Regla: una capa de datos (p. ej. un query builder), un solo motor en producción, y tests también contra el motor de producción antes del merge.
 
+## GitHub
+
+- **El `Status` de un Project no se renombra y cambiarle opciones borra valores** (2026-10). `updateProjectV2Field` aceptó las opciones nuevas pero ignoró el nombre, y el script falló al buscar "Estado". Regla: usar `Status` como campo de estado; cambiar las opciones de un campo de selección solo antes de poner valores, y en scripts idempotentes no volver a tocarlas si ya están.
+- **Las vistas de un Project sí se crean por API, el agrupado no** (2026-10). `createProjectV2View` + `updateProjectV2View` (con `filter`) crean tablas y tableros; agrupar o elegir las columnas del tablero se hace a mano. Regla: crear las vistas por script y dejarle al dueño solo el agrupado, dicho en el PR.
+
 ## Deploy y servidores
 
 - **Deploy en un solo comando** (2026-10). Es lo que el dueño prefiere: respaldo → acción → verificación → instrucciones de reversa. El health debe decir el commit desplegado.
