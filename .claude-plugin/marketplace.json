@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "fabrica",
-      "description": "Método de trabajo, comandos (/retomar, /cerrar, /aprender, /consolidar, /revisar), agente explorador y carga del contexto de la empresa.",
+      "description": "Método de trabajo, comandos (/retomar, /cerrar, /bandeja, /estado, /aprender, /consolidar, /revisar), agente explorador y carga del contexto de la empresa.",
       "source": "./plugins/fabrica"
     }
   ]

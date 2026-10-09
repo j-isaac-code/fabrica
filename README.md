@@ -10,8 +10,8 @@ Este repo es personal y portable: no contiene nada de ninguna empresa. Lo propio
 fabrica (este repo, mío)                 fabrica-config (de cada empresa)
 ├── método genérico (skill metodo)       ├── CONTEXTO.md   apps, servidores, reglas
 ├── lecciones genéricas                  ├── lecciones.md  lo aprendido en esa empresa
-├── /retomar /cerrar /aprender           ├── decisiones/   lo que decidió el dueño
-│   /consolidar /revisar                 └── historial/
+├── /retomar /cerrar /bandeja /estado    ├── decisiones/   lo que decidió el dueño
+│   /aprender /consolidar /revisar       └── historial/
 ├── agente explorador (modelo barato)
 └── hook de inicio ───── lee ──────────► CONTEXTO.md
 ```

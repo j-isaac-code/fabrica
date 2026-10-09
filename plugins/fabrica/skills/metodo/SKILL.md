@@ -30,6 +30,26 @@ issue (porque · hacer · listo · probar)
   → /cerrar → ¿hubo lección? → /aprender
 ```
 
+## Project y etiquetas
+
+Un solo Project por empresa (dueño y número en su `CONTEXTO.md`) con issues de todos sus repos.
+
+| Campo | Valores |
+|---|---|
+| **Prioridad** | 🟢 Activa (máx. 3 apps) · 🟡 Siguiente · ⚪ En espera. Solo la mueve el dueño |
+| **Estado** | Bandeja · Pendiente · En curso · En revisión · Bloqueada · Hecha |
+| **App** · **Nivel** (A/B/C) · **Requiere OK** (Sí/No) | |
+
+| Etiqueta | Cuándo |
+|---|---|
+| `tarea` | Todo issue de trabajo |
+| `nivel-A` · `nivel-B` · `nivel-C` | Nivel de OK (ver abajo) |
+| `requiere-ok` | Algún paso necesita el OK del dueño |
+| `espera-ok` | Está esperando al dueño (merge, OK o decisión). Se quita cuando él responde |
+| `bandeja` | Idea suelta que entró con `/bandeja` y nadie ha clasificado |
+
+`/bandeja <idea>` crea el issue en el repo correcto; `/estado` da la tabla de las apps activas.
+
 ## Qué haces solo y qué necesita OK
 
 | Solo | Con OK explícito del dueño |
