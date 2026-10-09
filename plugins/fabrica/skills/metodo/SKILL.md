@@ -37,7 +37,7 @@ Un solo Project por empresa (dueño y número en su `CONTEXTO.md`) con issues de
 | Campo | Valores |
 |---|---|
 | **Prioridad** | 🟢 Activa (máx. 3 apps) · 🟡 Siguiente · ⚪ En espera. Solo la mueve el dueño |
-| **Estado** | Bandeja · Pendiente · En curso · En revisión · Bloqueada · Hecha |
+| **Estado** (el `Status` del Project: GitHub no deja renombrarlo) | Bandeja · Pendiente · En curso · En revisión · Bloqueada · Hecha |
 | **App** · **Nivel** (A/B/C) · **Requiere OK** (Sí/No) | |
 
 | Etiqueta | Cuándo |
