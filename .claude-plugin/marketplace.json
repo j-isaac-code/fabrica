@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "fabrica",
+  "description": "Fábrica de software: método para trabajar con Claude Code por tareas, con pocos OK y aprendizaje continuo.",
+  "owner": { "name": "j-isaac-code" },
+  "plugins": [
+    {
+      "name": "fabrica",
+      "description": "Método de trabajo, comandos (/retomar, /cerrar, /aprender, /consolidar, /revisar), agente explorador y carga del contexto de la empresa.",
+      "source": "./plugins/fabrica"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "description": "Carga el contexto de la empresa (fabrica-config) al iniciar cada sesión",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/cargar-contexto.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
