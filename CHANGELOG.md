@@ -2,6 +2,9 @@
 
 Cada mejora del método sube la versión de `plugins/fabrica/.claude-plugin/plugin.json` y deja una línea aquí.
 
+## 0.2.1 — 2026-10-09
+- Lecciones: sección GitHub (el `Status` de un Project no se renombra; vistas por API sin agrupado).
+
 ## 0.2.0 — 2026-10-09
 - Comando `/bandeja <idea>`: convierte una idea suelta en un issue armado con la plantilla, en el repo de su app (o en `fabrica-config` si no tiene), con la etiqueta `bandeja`, y lo suma al Project.
 - Comando `/estado`: tabla de las apps activas del Project con lo que avanzó en 7 días, lo que espera al dueño y lo bloqueado.
