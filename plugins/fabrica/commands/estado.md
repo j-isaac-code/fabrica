@@ -1,6 +1,6 @@
 ---
 description: Estado de las apps activas del Project — qué avanzó, qué espera al dueño y qué está bloqueado
-allowed-tools: Bash(gh project item-list:*), Bash(gh project list:*), Bash(gh issue list:*), Bash(gh pr list:*), Read
+allowed-tools: Bash(FABRICA_PROJECT_OWNER=* FABRICA_PROJECT_NUMBER=* */scripts/tablero.sh activas), Bash(gh issue list:*), Bash(gh pr list:*), Read
 ---
 
 ## Tu tarea
@@ -8,9 +8,9 @@ allowed-tools: Bash(gh project item-list:*), Bash(gh project list:*), Bash(gh is
 Sigue el método (skill `metodo`). Es solo lectura: no cambies issues ni el Project.
 
 1. Toma del contexto de la empresa el **Project** (dueño y número). Si no está, dilo y detente.
-2. Lee los items activos sin volcar JSON al chat, filtrando con `--jq`:
-   `gh project item-list <número> --owner <dueño> --limit 500 --format json --query 'is:open prioridad:"🟢 Activa"'`
-   (los campos llegan como llaves: `prioridad`, `status` —el Estado—, `app`, `labels`, `content`; si cambian, míralas una vez con `--jq '.items[0] | keys'`).
+2. Lee los items activos con el script del plugin (la misma consulta que la vista "Esta semana" del Project; no armes otra):
+   `FABRICA_PROJECT_OWNER=<dueño> FABRICA_PROJECT_NUMBER=<número> ${CLAUDE_PLUGIN_ROOT}/scripts/tablero.sh activas`
+   Devuelve un JSON por línea con `ref` (`repo#n`), `titulo`, `tipo`, `estado`, `app`, `etiquetas` y `url`. La etiqueta `🤖 trabajando` quiere decir que Claude está corriendo en ese issue ahora.
 3. Para cada repo de esas apps, mira lo de los **últimos 7 días**:
    - PRs fusionados: `gh pr list -R <repo> --state merged --search "merged:>=<fecha>"`
    - Issues cerrados: `gh issue list -R <repo> --state closed --search "closed:>=<fecha>"`
