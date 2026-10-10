@@ -2,6 +2,9 @@
 
 Cada mejora del método sube la versión de `plugins/fabrica/.claude-plugin/plugin.json` y deja una línea aquí.
 
+## 0.2.2 — 2026-10-09
+- Lecciones: sección "Action de Claude en GitHub" (token de setup-token en dos renglones, la App no toca workflows, comandos exactos en el prompt, CI que no corre tests, costo de las tareas chicas).
+
 ## 0.2.1 — 2026-10-09
 - Lecciones: sección GitHub (el `Status` de un Project no se renombra; vistas por API sin agrupado).
 
