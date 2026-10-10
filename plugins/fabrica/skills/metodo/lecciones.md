@@ -26,6 +26,14 @@ Para agregar una: `/aprender`. Para depurar: `/consolidar`.
 - **El `Status` de un Project no se renombra y cambiarle opciones borra valores** (2026-10). `updateProjectV2Field` aceptó las opciones nuevas pero ignoró el nombre, y el script falló al buscar "Estado". Regla: usar `Status` como campo de estado; cambiar las opciones de un campo de selección solo antes de poner valores, y en scripts idempotentes no volver a tocarlas si ya están.
 - **Las vistas de un Project sí se crean por API, el agrupado no** (2026-10). `createProjectV2View` + `updateProjectV2View` (con `filter`) crean tablas y tableros; agrupar o elegir las columnas del tablero se hace a mano. Regla: crear las vistas por script y dejarle al dueño solo el agrupado, dicho en el PR.
 
+## Action de Claude en GitHub
+
+- **El token de `claude setup-token` sale partido en dos renglones** (2026-10). Se pegó con el salto en medio y la primera corrida falló en 2 s, sin gastar tokens y sin mostrar el error. Regla: al guardarlo, quitarle los espacios y saltos (`pbpaste | tr -d '[:space:]'`) y probarlo antes con `CLAUDE_CODE_OAUTH_TOKEN=… claude -p "ok"`.
+- **La App de Claude no puede tocar `.github/workflows`** (2026-10). Claude intentó agregar un paso al CI y el push fue rechazado. Regla: los cambios de workflow los hace una sesión, no la Action; si un issue los necesita, que la Action lo diga y se detenga.
+- **El prompt de la Action debe nombrar los comandos exactos permitidos** (2026-10). Claude corrió `cd … && npm test` y `npm ci`, fuera de `--allowedTools`, y no abrió el PR. Regla: comandos sin `cd`, uno por línea (`uv run --directory <dir> …`, `npm --prefix <dir> run …`), los mismos en `--allowedTools` y en el prompt, y abrir siempre el PR (borrador si una prueba falla).
+- **Un CI verde no prueba nada si no corre los tests** (2026-10). Un PR de tests nuevos salió verde porque el CI solo hacía lint y build. Regla: antes de aceptar el verde, revisar que el CI ejecute los tests del lado que se tocó.
+- **Las tareas chicas por Action salen baratas** (2026-10). Tres issues de nivel A costaron ~US$ 0.84 equivalentes en total (10-24 turnos, menos de 2 min cada uno). Regla: lo chico y bien escrito va por Action; las sesiones largas, solo para lo que no cabe en un issue.
+
 ## Deploy y servidores
 
 - **Deploy en un solo comando** (2026-10). Es lo que el dueño prefiere: respaldo → acción → verificación → instrucciones de reversa. El health debe decir el commit desplegado.

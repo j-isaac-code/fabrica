@@ -1,6 +1,6 @@
 {
   "name": "fabrica",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Método de la fábrica de software: la tarea es la unidad, el dueño aprueba lo mínimo y lo aprendido vuelve al método.",
   "author": { "name": "j-isaac-code" }
 }
