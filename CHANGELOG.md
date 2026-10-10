@@ -2,6 +2,10 @@
 
 Cada mejora del método sube la versión de `plugins/fabrica/.claude-plugin/plugin.json` y deja una línea aquí.
 
+## 0.3.0 — 2026-10-10
+- Script `scripts/tablero.sh`: única implementación de las consultas del Project. `activas` (la consulta de la vista "Esta semana", que ahora usa `/estado`), `copiar` (copia vacía del tablero con `copyProjectV2`, sin borradores, y verifica 0 ítems) y `contar`.
+- README: el tablero es el GitHub Project; receta para crearlo en otra cuenta, qué copia `copyProjectV2` y qué se hace a mano (workflows, campo Labels), y el paso de la etiqueta `🤖 trabajando` para la Action de Claude.
+
 ## 0.2.2 — 2026-10-09
 - Lecciones: sección "Action de Claude en GitHub" (token de setup-token en dos renglones, la App no toca workflows, comandos exactos en el prompt, CI que no corre tests, costo de las tareas chicas).
 
