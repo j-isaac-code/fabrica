@@ -40,17 +40,17 @@ FABRICA_PROJECT_OWNER=<dueño-plantilla> FABRICA_PROJECT_NUMBER=<número> \
   plugins/fabrica/scripts/tablero.sh copiar <cuenta-u-organización-destino> "<título>"
 ```
 
-Usa la mutación `copyProjectV2` con `includeDraftIssues: false` y verifica que la copia quede con 0 ítems. Si la plantilla es privada, la cuenta que copia tiene que ser colaboradora (al menos lectora).
+Usa la mutación `copyProjectV2` con `includeDraftIssues: false` y verifica que la copia quede con 0 ítems. Si la plantilla es privada, la cuenta que copia tiene que ser colaboradora con rol **Write** o más: con Read, GitHub responde "You do not have permission to copy this project".
 
 | `copyProjectV2` copia | No copia |
 |---|---|
 | Campos propios con sus opciones (`Prioridad`, `App`, `Nivel`, `Requiere OK`) y las de `Status` | Ítems (issues y PRs) |
 | Vistas (tabla y tablero, con su filtro) | Borradores (con `includeDraftIssues: false`) |
-| Workflows configurados, **en el mismo estado que en la plantilla** | Workflows de auto-agregar, colaboradores y repos vinculados |
+| Workflows, pero **todos encendidos y con la configuración por omisión de GitHub**, aunque en la plantilla estén apagados | Workflows de auto-agregar, colaboradores y repos vinculados |
 
 ### A mano, después de copiar (la API no lo permite)
 
-1. **Workflows** (menú `…` → Workflows): activar **Item closed → `Hecha`** y **Pull request linked to issue → `En revisión`**. La API no deja activarlos ni elegir el estado destino.
+1. **Workflows** (menú `…` → Workflows): dejar encendidos solo **Item closed → `Hecha`** y **Pull request linked to issue → `En revisión`**, eligiendo ese estado destino en cada uno, y apagar los demás. La API no deja configurarlos.
 2. **Vista "Esta semana"** (tablero): en `View` → Fields, mostrar **Labels**, para que la tarjeta muestre `espera-ok` y `🤖 trabajando`. Revisar que las columnas sean por `Status`.
 3. Opciones del campo `App`: dejar las apps de la empresa nueva (se copian las de la plantilla).
 4. Sumar los issues con `gh project item-add` o con `/bandeja`.

@@ -65,13 +65,14 @@ copiar() {
 
   local id_origen id_destino
   id_origen=$(id_project "$FABRICA_PROJECT_OWNER" "$FABRICA_PROJECT_NUMBER")
-  [ -n "$id_origen" ] || falta "no veo el Project $FABRICA_PROJECT_OWNER/$FABRICA_PROJECT_NUMBER con esta cuenta (¿es privado y no eres colaborador?)"
+  [ -n "$id_origen" ] || falta "no veo el Project $FABRICA_PROJECT_OWNER/$FABRICA_PROJECT_NUMBER con esta cuenta (si es privado, hay que ser colaborador con rol Write)"
   id_destino=$(gh api graphql -f login="$destino" -f query='
     query($login: String!) { repositoryOwner(login: $login) { id } }' --jq '.data.repositoryOwner.id // empty')
   [ -n "$id_destino" ] || falta "no encuentro la cuenta u organización '$destino'"
 
-  # copyProjectV2 copia campos, vistas y workflows (salvo los auto-add);
-  # no copia ítems, colaboradores ni repos vinculados. Sin borradores.
+  # copyProjectV2 copia campos, vistas y workflows (encendidos y con la
+  # configuración por omisión); no copia ítems, colaboradores ni repos
+  # vinculados. Sin borradores. Sobre un Project privado pide rol Write.
   local nuevo
   nuevo=$(gh api graphql -f p="$id_origen" -f o="$id_destino" -f t="$titulo" -f query='
     mutation($p: ID!, $o: ID!, $t: String!) {
@@ -86,7 +87,7 @@ copiar() {
   echo "Copia creada: $url (número $numero, $items ítems)"
   [ "$items" = "0" ] || falta "la copia tiene $items ítems: revísala antes de usarla"
 
-  echo "Workflows de la copia (actívalos a mano en Settings → Workflows, ver README):"
+  echo "Workflows de la copia (llegan con la configuración por omisión: revísalos a mano, ver README):"
   gh api graphql -f login="$destino" -F n="$numero" -f query='
     query($login: String!, $n: Int!) {
       repositoryOwner(login: $login) {
