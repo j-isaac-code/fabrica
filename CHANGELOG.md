@@ -2,6 +2,9 @@
 
 Cada mejora del método sube la versión de `plugins/fabrica/.claude-plugin/plugin.json` y deja una línea aquí.
 
+## 0.3.1 — 2026-10-10
+- Lecciones (GitHub): copiar un Project privado pide rol Write; la copia trae los workflows encendidos con la configuración por omisión.
+
 ## 0.3.0 — 2026-10-10
 - Script `scripts/tablero.sh`: única implementación de las consultas del Project. `activas` (la consulta de la vista "Esta semana", que ahora usa `/estado`), `copiar` (copia vacía del tablero con `copyProjectV2`, sin borradores, y verifica 0 ítems) y `contar`.
 - README: el tablero es el GitHub Project; receta para crearlo en otra cuenta, qué copia `copyProjectV2` y qué se hace a mano (workflows, campo Labels), y el paso de la etiqueta `🤖 trabajando` para la Action de Claude.
