@@ -25,6 +25,8 @@ Para agregar una: `/aprender`. Para depurar: `/consolidar`.
 
 - **El `Status` de un Project no se renombra y cambiarle opciones borra valores** (2026-10). `updateProjectV2Field` aceptó las opciones nuevas pero ignoró el nombre, y el script falló al buscar "Estado". Regla: usar `Status` como campo de estado; cambiar las opciones de un campo de selección solo antes de poner valores, y en scripts idempotentes no volver a tocarlas si ya están.
 - **Las vistas de un Project sí se crean por API, el agrupado no** (2026-10). `createProjectV2View` + `updateProjectV2View` (con `filter`) crean tablas y tableros; agrupar o elegir las columnas del tablero se hace a mano. Regla: crear las vistas por script y dejarle al dueño solo el agrupado, dicho en el PR.
+- **Copiar un Project privado pide rol Write** (2026-10). Con el colaborador en Read, `copyProjectV2` respondió "You do not have permission to copy this project"; con Write funcionó. Regla: dar Write temporal a la cuenta que copia y quitarlo (rol `NONE`) en el mismo comando.
+- **La copia de un Project trae todos sus workflows encendidos y con la configuración por omisión** (2026-10), aunque en el origen estén apagados o configurados. Regla: después de copiar, revisar a mano cada workflow (estado destino) y apagar los que no se usan; la API no deja configurarlos.
 
 ## Action de Claude en GitHub
 
